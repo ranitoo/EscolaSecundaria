@@ -62,13 +62,13 @@ import java.io.Serializable;
 	public String getNome() {
 	return nome;
 	}
-	public void setNome() {
+	public void setNome(String nome) {
 	this.nome=nome;
 	}
 	public String getApelido() {
 	return apelido;
 	}
-	public void setApelido() {
+	public void setApelido(String apelido) {
 	this.apelido=apelido;
 	}
 	
