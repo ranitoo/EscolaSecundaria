@@ -9,9 +9,9 @@ public class GerirProfessor {
         System.out.println("|                    Menu Professor                      |");
         System.out.println("|________________________________________________________|");
         System.out.println("|                    1 - Adicionar Professor             |");
-        System.out.println("|                    2 - Remover Professor               |");
-        System.out.println("|                    3 - Listar Professores              |");
-        System.out.println("|                    4 - Atualizar Professor             |");
+        System.out.println("|                    2 - Remover professor               |");
+        System.out.println("|                    3 - Listar professores              |");
+        System.out.println("|                    4 - Atualizar professor             |");
         System.out.println("|                    7 - Sair                            |");
         System.out.println("#########################################################");
         System.out.println("                    Selecione uma opcao                  ");
@@ -33,11 +33,11 @@ public class GerirProfessor {
     		break;
     		
     	case 2:
-    		System.out.println("NIF do professor que pretende remover: ");
-    		int NIF = Ler.umInt();
+    		System.out.println("Numero escolar do professor que pretende remover: ");
+    		int numescolar = Ler.umInt();
     		boolean removed = false;
     		for (int i = 0; i < professores.size(); i++) {
-    			if(professores.get(i).getNif() == NIF) {
+    			if(professores.get(i).getNif() == numescolar) {
     				professores.remove(i);
     				removed = true;
     				break;
@@ -58,7 +58,7 @@ public class GerirProfessor {
     		System.out.println("NIF do professor que pretende atualizar: ");
     		boolean found = false;
     		for(int i = 0; i < professores.size(); i++) {
-    			if(professores.get(i).getNif() == NIF) {
+    			if(professores.get(i).getNif() == numescolar) {
     				found = true;
     				break;
     			}
