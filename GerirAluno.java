@@ -33,7 +33,7 @@ public class GerirAluno {
     		break;
     		
     	case 2:
-    		System.out.println("numero do aluno que pretende remover: ");
+    		System.out.println("Número escolar do aluno que pretende remover: ");
     		int numescolar = Ler.umInt();
     		boolean removed = false;
     		for (int i = 0; i < alunos.size(); i++) {
@@ -58,7 +58,7 @@ public class GerirAluno {
     		System.out.println("numero do aluno que pretende atualizar: ");
     		boolean found = false;
     		for(int i = 0; i < alunos.size(); i++) {
-    			if(alunos.get(i).getNif() == NIF) {
+    			if(alunos.get(i).getnumescolar() == numescolar) {
     				found = true;
     				break;
     			}
