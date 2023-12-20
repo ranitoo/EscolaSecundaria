@@ -5,13 +5,13 @@ import java.time.LocalDateTime;
 
 public class Aluno extends Pessoa {
 	private Disciplina disciplina;
-        private int NIF;
+        private int nif;
         private String email;
         private int anoescolar;
         
         public Aluno(String nome, String apelido, int numescolar, LocalDateTime nascimento, String disciplina, int nif, String email, int anoescolar) {
             super(nome, apelido, numescolar, nascimento);
-            this.NIF = nif;
+            this.nif = nif;
             this.disciplina = new Disciplina(disciplina);
             this.anoescolar= anoescolar;
             
@@ -24,10 +24,10 @@ public class Aluno extends Pessoa {
 	    this.Disciplina=disciplina;	
 	    }
 		public int getNif() {
-			return NIF;
+			return nif;
 		}
-		public void setNif(int NIF) {
-			this.NIF=NIF;
+		public void setNif(int nif) {
+			this.nif=nif;
 		}
 		public String getEmail() {
 		     return email;
@@ -52,16 +52,16 @@ public class Aluno extends Pessoa {
 		String disciplina = Ler.umaString();
 
 		System.out.println("Insira o NIF do aluno: ");
-		int NIF = Ler.umInt();
+		int nif = Ler.umInt();
 
 		System.out.println("Insira o email do aluno: ");
 		String email = Ler.umString();
 		
-		return new Aluno (pessoa.getNome(), pessoa.getApelido(), pessoa.getNumescolar(), pessoa.getNascimento(), disciplina , NIF, email);
+		return new Aluno (pessoa.getNome(), pessoa.getApelido(), pessoa.getNumescolar(), pessoa.getNascimento(), disciplina , nif, email);
 	}
 	
 		public String tostring(){
-			return super.toString() + String.format("Disciplina: %s, NIF: %d, Email: %s", disciplina, NIF, email); 
+			return super.toString() + String.format("Disciplina: %s, NIF: %d, Email: %s", disciplina, nif, email); 
 			
 		}
 	} 
