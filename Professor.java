@@ -1,20 +1,19 @@
-
-	import myinputs.Ler;
+import myinputs.Ler;
 import java.time.LocalDateTime;
 
 	public class Professor extends Pessoa {
 		private Disciplina disciplina; //mudar para array
 		private float salario; 
 		private int numturmas;
-		private int NIF;
+		private int nif;
 		private String email;
 		
-		public Professor(String nome, String apelido, int numescolar,LocalDateTime nascimento, String cargo, String Disciplina, float salario, int numturmas, int NIF, String email) {
+		public Professor(String nome, String apelido, int numescolar,LocalDateTime nascimento, String cargo, String Disciplina, float salario, int numturmas, int nif, String email) {
 			super(nome, apelido, numescolar, nascimento, cargo);
 			this.disciplina = disciplina;
 			this.salario = salario;
 			this.numturmas = numturmas;
-			this.NIF = NIF;
+			this.nif = nif;
 			this.email = email;
 		}
 		
@@ -43,11 +42,11 @@ import java.time.LocalDateTime;
 		}
 		
 		public int getNif() {
-			return NIF;
+			return nif;
 		}
 		
-		public void setNif(int NIF) {
-			this.NIF=NIF;
+		public void setNif(int nif) {
+			this.nif=nif;
 		}
 
 		public String getEmail(){
@@ -69,15 +68,14 @@ import java.time.LocalDateTime;
 			System.out.println("Insira o número de turmas que o professor leciona: ");
 			int numturmas = Ler.umInt();
 			System.out.println("Insira o NIF do professor: ");
-			int NIF = Ler.umInt();
+			int nif = Ler.umInt();
 			System.out.println("Insira o email do professor: ");
 			String email = Ler.umaString();
 			
-			return new Professor(pessoa.getNome(), pessoa.getApelido(), pessoa.getNumescolar(), pessoa.getNascimento(), pessoa.getCargo(), disciplina, salario, numturmas, NIF, email);
+			return new Professor(pessoa.getNome(), pessoa.getApelido(), pessoa.getNumescolar(), pessoa.getNascimento(), pessoa.getCargo(), disciplina, salario, numturmas, nif, email);
 		}
 		
 		public String tostring(){
-			return super.toString() + String.format("Disciplina %s:, salario %f:, numturmas %d:, NIF: %d:, Email: %s ", disciplina, salario, numturmas, NIF, email); 
+			return super.toString() + String.format("Disciplina %s:, salario %f:, numturmas %d:, NIF: %d:, Email: %s ", disciplina, salario, numturmas, nif, email); 
 			
 		}
-	}
