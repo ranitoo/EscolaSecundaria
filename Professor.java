@@ -1,28 +1,31 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.io.Serializable;
 import myinputs.Ler;
-import java.time.LocalDateTime;
 
-	public class Professor extends Pessoa {
-		private Disciplina disciplina; //mudar para array
+	public class Professor extends Pessoa implements Serializable{
+		private List<Especialidade> especialidades; 
 		private float salario; 
 		private int numturmas;
 		private int nif;
 		private String email;
 		
-		public Professor(String nome, String apelido, int numescolar,LocalDateTime nascimento, String cargo, String Disciplina, float salario, int numturmas, int nif, String email) {
-			super(nome, apelido, numescolar, nascimento, cargo);
-			this.disciplina = disciplina;
+		
+		public Professor(Pessoa p, List<Especialidade> especialidades, float salario, int numturmas, int nif, String email) {
+			super(p.getNome(), p.getApelido(), p.getNumescolar(), p.getNascimento(), p.getCargo());
+			this.especialidades = especialidades;
 			this.salario = salario;
 			this.numturmas = numturmas;
 			this.nif = nif;
 			this.email = email;
 		}
 		
-		public Disciplina getDisciplina() {
-			return disciplina;
+		public List<Especialidade> getEspecialidades() {
+			return especialidades;
 		}
 		
-		public void setDisciplina(Disciplina disciplina) {
-			this.disciplina=disciplina;
+		public void setDisciplina(List<Especialidade> especialidade) {
+			this.especialidades = especialidades;
 		}
 		
 		public float getSalario() {
@@ -57,12 +60,20 @@ import java.time.LocalDateTime;
 			this.email=email;
 		}
 		
-		
 		public static Professor novoProfessor() {
-			Pessoa pessoa = novaPessoa();
+			Pessoa p = Pessoa.novaPessoa();
+		
+		List<Especialidade> especialidades = new ArrayList<>();
+        int opcao;
+        do {
+            System.out.println("Escolha a especialidade que leciona:");
+            Especialidade especialidade = Especialidade.getEspecialidade();
+            especialidades.add(especialidade);
+
+            System.out.println("Deseja adicionar mais uma especialidade? (1 - Sim / 2 - Não)");
+            opcao = Ler.umInt();
+        } while (opcao == 1);
 			
-			System.out.println("Insira a disciplina que leciona: ");
-			String disciplina = Ler.umaString();
 			System.out.println("Insira o salário do professor: ");
 			float salario = Ler.umFloat();
 			System.out.println("Insira o número de turmas que o professor leciona: ");
@@ -72,10 +83,10 @@ import java.time.LocalDateTime;
 			System.out.println("Insira o email do professor: ");
 			String email = Ler.umaString();
 			
-			return new Professor(pessoa.getNome(), pessoa.getApelido(), pessoa.getNumescolar(), pessoa.getNascimento(), pessoa.getCargo(), disciplina, salario, numturmas, nif, email);
+			return new Professor(p, especialidades, salario, numturmas, nif, email);
 		}
 		
 		public String tostring(){
-			return super.toString() + String.format("Disciplina %s:, salario %f:, numturmas %d:, NIF: %d:, Email: %s ", disciplina, salario, numturmas, nif, email); 
+			return super.toString() + String.format("Disciplinas que leciona: [%s]:, salario %f:, numturmas %d:, NIF: %d:, Email: %s ", especialidades, salario, numturmas, nif, email); 
 			
 		}
