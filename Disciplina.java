@@ -2,7 +2,7 @@ import myinputs.Ler;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum Especialidade {
+public enum Disciplina {
         Português(2000),
         Biologia_e_Geologia(2000),
         Matemática_A(2000),
@@ -21,12 +21,12 @@ public enum Especialidade {
 
     private int salario;
     
-    Especialidade(int salario) {
+    Disciplina(int salario) {
         this.salario = salario;
     }
 
-    public static List<Especialidade> getEspecialidades() {
-    	List<Especialidade> especialidadesSelecionadas = new ArrayList<>();
+    public static List<Disciplina> getDisciplinas() {
+    	List<Disciplina> disciplinasSelecionadas = new ArrayList<>();
     	
     	System.out.println("Selecione as disciplinas que o professor leciona: ");
     	int opcao;
@@ -52,11 +52,11 @@ public enum Especialidade {
         opcao = Ler.umInt();
         
         if(opcao > 0 && opcao <= values().length) {
-        	especialidadesSelecionadas.add(values()[opcao - 1]);
+        	disciplinasSelecionadas.add(values()[opcao - 1]);
         } else if(opcao != 0) {
         	System.out.println("Opção inválida.");
         }
     	}while (opcao != 0);
         
-    	return especialidadesSelecionadas;
+    	return disciplinasSelecionadas;
     }}
