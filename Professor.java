@@ -6,18 +6,18 @@ import myinputs.Ler;
 	public class Professor extends Pessoa implements Serializable{
 		private static int ultimoId = 0;
 		private int id;
-		private List<Especialidade> especialidades; 
+		private List<Disciplina> disciplinas; 
 		private float salario; 
 		private int numturmas;
 		private int nif;
 		private String email;
 		
 		
-		public Professor(Pessoa p, List<Especialidade> especialidades, float salario, int numturmas, int nif, String email) {
+		public Professor(Pessoa p, List<Disciplina> disciplinas, float salario, int numturmas, int nif, String email) {
 			super(p.getNome(), p.getApelido(), p.getNumescolar(), p.getNascimento(), p.getCargo());
 			this.id = ultimoId + 1;
 			ultimoId++;
-			this.especialidades = especialidades;
+			this.disciplinas = disciplinas;
 			this.salario = salario;
 			this.numturmas = numturmas;
 			this.nif = nif;
@@ -36,12 +36,12 @@ import myinputs.Ler;
 	        return id;
 	    }
 	    
-		public List<Especialidade> getEspecialidades() {
-			return especialidades;
+		public List<Disciplina> getDisciplinas() {
+			return disciplinas;
 		}
 		
-		public void setDisciplina(List<Especialidade> especialidade) {
-			this.especialidades = especialidades;
+		public void setDisciplina(List<Disciplina> disciplina) {
+			this.disciplinas = disciplinas;
 		}
 		
 		public float getSalario() {
@@ -79,12 +79,12 @@ import myinputs.Ler;
 		public static Professor novoProfessor() {
 			Pessoa p = Pessoa.novaPessoa();
 		
-		List<Especialidade> especialidades = new ArrayList<>();
+		List<Disciplina> disciplinas = new ArrayList<>();
         int opcao;
         do {
             System.out.println("Escolha a especialidade que leciona:");
-            List<Especialidade> especialidade = Especialidade.getEspecialidades();
-            especialidades.add(especialidade);
+            List<Disciplina> disciplina = Disciplina.getDisciplinas();
+            Disciplina.add(disciplinas); //está a dar erro
 
             System.out.println("Deseja adicionar mais uma especialidade? (1 - Sim / 2 - Não)");
             opcao = Ler.umInt();
@@ -99,11 +99,11 @@ import myinputs.Ler;
 			System.out.println("Insira o email do professor: ");
 			String email = Ler.umaString();
 			
-			return new Professor(p, especialidades, salario, numturmas, nif, email);
+			return new Professor(p, disciplinas, salario, numturmas, nif, email);
 		}
 		
 		public String tostring(){
-			return super.toString() + String.format("Disciplinas que leciona: [%s]:, salario %f:, numturmas %d:, NIF: %d:, Email: %s ", especialidades, salario, numturmas, nif, email); 
+			return super.toString() + String.format("Disciplinas que leciona: [%s]:, salario %f:, numturmas %d:, NIF: %d:, Email: %s ", disciplinas, salario, numturmas, nif, email); 
 			
 		}
 	}
