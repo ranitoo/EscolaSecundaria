@@ -22,8 +22,7 @@ public class GerirProfessor {
     
     public static void gerirProfessor() {
     	int op;
-    	ArrayList<Professor> professores;
-    	professores = FuncProfessor.getProfessores();
+    	ArrayList<Professor> professores = FuncProfessor.getProfessores();
 
     do {
     	op = menu();
@@ -55,23 +54,18 @@ public class GerirProfessor {
     	 	break;
     	 
     	case 4:
-    		System.out.println("NIF do professor que pretende atualizar: ");
+    		System.out.println("numescolar do professor que pretende atualizar: ");
+    		int numescolar1 = Ler.umInt();
     		boolean found = false;
     		for(int i = 0; i < professores.size(); i++) {
-    			if(professores.get(i).getNif() == numescolar) {
+    			if(professores.get(i).getNif() == numescolar1) {
     				found = true;
-    				break;
-    			}
-    		}
-    		
-    		if(found) {
-    			Professor professor = professores.get(i);
+    				Professor professor = professores.get(i);
+    			
     	        System.out.println("Digite o novo nome do professor: ");
     	        String nome = Ler.umaString();
     	        System.out.println("Digite o novo email do professor: ");
     	        String email = Ler.umaString();
-    	        System.out.println("Digite a nova disciplina do professor: ");
-    	        String disciplina = Ler.umaString();
     	        System.out.println("Digite o novo salário do professor: ");
     	        float salario = Ler.umFloat();
     	        System.out.println("Digite o novo número de turmas do professor: ");
@@ -79,17 +73,21 @@ public class GerirProfessor {
     			
     	        professor.setNome(nome);
     	        professor.setEmail(email);
-    	        professor.setDisciplina(disciplina);
     	        professor.setSalario(salario);
     	        professor.setNumturmas(numturmas);
     	        
-    	        System.out.println("Professor atualizado com sucesso!");
-    		}else {
+    			System.out.println("Professor atualizado com sucesso!");
+    			break;
+    			
+    			}
+    		}
+    	   
+    	     if(!found) {
     			System.out.println("Professor não encontrado.");
     		}break;
+    		}
     	
-    	}
+    	}while (op != 7);
     
-    }while (op != 7);
-    }
-}
+   	}
+ } 
