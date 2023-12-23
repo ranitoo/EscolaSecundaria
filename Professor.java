@@ -4,6 +4,8 @@ import java.io.Serializable;
 import myinputs.Ler;
 
 	public class Professor extends Pessoa implements Serializable{
+		private static int ultimoId = 0;
+		private int id;
 		private List<Especialidade> especialidades; 
 		private float salario; 
 		private int numturmas;
@@ -13,6 +15,8 @@ import myinputs.Ler;
 		
 		public Professor(Pessoa p, List<Especialidade> especialidades, float salario, int numturmas, int nif, String email) {
 			super(p.getNome(), p.getApelido(), p.getNumescolar(), p.getNascimento(), p.getCargo());
+			this.id = ultimoId + 1;
+			ultimoId++;
 			this.especialidades = especialidades;
 			this.salario = salario;
 			this.numturmas = numturmas;
@@ -20,6 +24,18 @@ import myinputs.Ler;
 			this.email = email;
 		}
 		
+	    public static int getUltimo() {
+	        return ultimoId;
+	    }
+
+	    public static void setUltimo(int i) {
+	        ultimoId = i;
+	    }
+		
+	    public int getId() {
+	        return id;
+	    }
+	    
 		public List<Especialidade> getEspecialidades() {
 			return especialidades;
 		}
@@ -67,7 +83,7 @@ import myinputs.Ler;
         int opcao;
         do {
             System.out.println("Escolha a especialidade que leciona:");
-            Especialidade especialidade = Especialidade.getEspecialidade();
+            List<Especialidade> especialidade = Especialidade.getEspecialidades();
             especialidades.add(especialidade);
 
             System.out.println("Deseja adicionar mais uma especialidade? (1 - Sim / 2 - Não)");
@@ -90,3 +106,4 @@ import myinputs.Ler;
 			return super.toString() + String.format("Disciplinas que leciona: [%s]:, salario %f:, numturmas %d:, NIF: %d:, Email: %s ", especialidades, salario, numturmas, nif, email); 
 			
 		}
+	}
