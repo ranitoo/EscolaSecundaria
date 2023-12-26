@@ -118,8 +118,8 @@ import myinputs.Ler;
 			return new Professor(p, disciplinas, salario, numturmas, nif, email);
 		}
 		
-		public String tostring(){
-			return super.toString() + String.format("Disciplinas que leciona: [%s]:, salario %f:, numturmas %d:, NIF: %d:, Email: %s ", disciplinas, salario, numturmas, nif, email); 
-			
+		public String toString() {
+		    return String.format("Nome: %s %s, Salário: %.2f, NumTurmas: %d, NIF: %d, Email: %s, Disciplinas: %s",
+		            getNome(), getApelido(), salario, numturmas, nif, email, disciplinas);
 		}
 	}
