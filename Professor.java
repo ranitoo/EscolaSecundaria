@@ -1,3 +1,6 @@
+package Professor;
+import Pessoa.Pessoa;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.io.Serializable;
@@ -14,7 +17,7 @@ import myinputs.Ler;
 		
 		
 		public Professor(Pessoa p, List<Disciplina> disciplinas, float salario, int numturmas, int nif, String email) {
-			super(p.getNome(), p.getApelido(), p.getNumescolar(), p.getNascimento(), p.getCargo());
+			super(p.getNome(), p.getApelido(), p.getNumescolar(), p.getNascimento());
 			this.id = ultimoId + 1;
 			ultimoId++;
 			this.disciplinas = disciplinas;
@@ -79,16 +82,29 @@ import myinputs.Ler;
 		public static Professor novoProfessor() {
 			Pessoa p = Pessoa.novaPessoa();
 		
-		List<Disciplina> disciplinas = new ArrayList<>();
-        int opcao;
-        do {
-            System.out.println("Escolha a especialidade que leciona:");
-            List<Disciplina> disciplina = Disciplina.getDisciplinas();
-            Disciplina.add(disciplinas); //está a dar erro
+			 List<Disciplina> disciplinas = new ArrayList<>();
+			    int opcao;
+			    do {
+			        System.out.println("Escolha uma disciplina que leciona:");
+			        List<Disciplina> disciplinaList = Disciplina.getDisciplinas();
+			        System.out.println("Disciplinas disponíveis:");
+			        for (int i = 0; i < disciplinaList.size(); i++) {
+			            System.out.println((i + 1) + " - " + disciplinaList.get(i));
+			        }
+			        opcao = Ler.umInt();
+			        
+			        if (opcao > 0 && opcao <= disciplinaList.size()) {
+			            disciplinas.add(disciplinaList.get(opcao - 1));
+			            System.out.println("Disciplina adicionada: " + disciplinaList.get(opcao - 1));
+			            
+			            System.out.println("Deseja adicionar mais uma disciplina? (1 - Sim / 2 - Não)");
+				        opcao = Ler.umInt();
+				        
+			        } else {
+			            System.out.println("Opção inválida.");
+			        }
 
-            System.out.println("Deseja adicionar mais uma especialidade? (1 - Sim / 2 - Não)");
-            opcao = Ler.umInt();
-        } while (opcao == 1);
+			    } while (opcao == 1);
 			
 			System.out.println("Insira o salário do professor: ");
 			float salario = Ler.umFloat();
