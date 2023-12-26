@@ -6,13 +6,13 @@ public class GerirAluno {
     public static int menu() {
         int opcao;
         System.out.println("#########################################################");
-        System.out.println("|                    Menu ALuno                      |");
-        System.out.println("|________________________________________________________|");
-        System.out.println("|                    1 - Adicionar Aluno           |");
-        System.out.println("|                    2 - Remover Aluno              |");
-        System.out.println("|                    3 - Listar Aluno             |");
-        System.out.println("|                    4 - Atualizar Aluno             |");
-        System.out.println("|                    7 - Sair                            |");
+        System.out.println("|                    Menu ALuno                         |");
+        System.out.println("|_______________________________________________________|");
+        System.out.println("|                    1 - Adicionar Aluno                |");
+        System.out.println("|                    2 - Remover Aluno                  |");
+        System.out.println("|                    3 - Listar Aluno                   |");
+        System.out.println("|                    4 - Atualizar Aluno                |");
+        System.out.println("|                    7 - Sair                           |");
         System.out.println("#########################################################");
         System.out.println("                    Selecione uma opcao                  ");
         opcao = Ler.umInt();
@@ -22,14 +22,13 @@ public class GerirAluno {
     
     public static void gerirAluno() {
     	int op;
-    	ArrayList<Aluno> alunos;
-    	alunos = Funcaluno.getalunos();
+    	ArrayList<Aluno> alunos = FuncAluno.getAlunos();
 
     do {
     	op = menu();
     	switch(op) {
     	case 1:
-    		alunos.add(aluno.novoAluno());
+    		alunos.add(Aluno.novoAluno());
     		break;
     		
     	case 2:
@@ -55,10 +54,10 @@ public class GerirAluno {
     	 	break;
     	 
     	case 4:
-    		System.out.println("numero do aluno que pretende atualizar: ");
+    		System.out.println("Número do aluno que pretende atualizar: ");
     		boolean found = false;
     		for(int i = 0; i < alunos.size(); i++) {
-    			if(alunos.get(i).getnumescolar() == numescolar) {
+    			if(alunos.get(i).getNumescolar() == numescolar) {
     				found = true;
     				break;
     			}
@@ -70,18 +69,17 @@ public class GerirAluno {
     	        String nome = Ler.umaString();
     	        System.out.println("Digite o novo email do aluno: ");
     	        String email = Ler.umaString();
-    	        System.out.println("Digite a nova disciplina do aluno: ");
-    	        String disciplina = Ler.umaString();
+    	        //curso
     	        System.out.println("Digite o novo NIF do aluno: ");
-    	        int NIF = Ler.umInt();
+    	        int nif = Ler.umInt();
     	        System.out.println("Digite o novo ano escolar:");
     	        int anoescolar =Ler.umInt();
     			
     	        aluno.setNome(nome);
     	        aluno.setEmail(email);
-    	        aluno.setDisciplina(disciplina);
-    	        aluno.setSalario(NIF);
-    	        aluno.setAnoEscolar(anoescolar);
+    	        //curso
+    	        aluno.setNif(nif);
+    	        aluno.setAnoescolar(anoescolar);
     	        
     	        System.out.println("Aluno atualizado com sucesso!");
     		}else {
@@ -93,3 +91,4 @@ public class GerirAluno {
     }while (op != 7);
     }
 }
+
