@@ -37,7 +37,7 @@ public class GerirProfessor {
     		int numescolar1 = Ler.umInt();
     		boolean removed = false;
     		for (int i = 0; i < professores.size(); i++) {
-    			if(professores.get(i).getNif() == numescolar1) {
+    			if(professores.get(i).getNumescolar() == numescolar1) {
     				professores.remove(i);
     				removed = true;
     				break;
