@@ -1,4 +1,5 @@
 import myinputs.Ler;
+import java.util.List;
 import java.util.ArrayList;
 
 public class GerirProfessor {
@@ -33,10 +34,10 @@ public class GerirProfessor {
     		
     	case 2:
     		System.out.println("Numero escolar do professor que pretende remover: ");
-    		int numescolar = Ler.umInt();
+    		int numescolar1 = Ler.umInt();
     		boolean removed = false;
     		for (int i = 0; i < professores.size(); i++) {
-    			if(professores.get(i).getNif() == numescolar) {
+    			if(professores.get(i).getNif() == numescolar1) {
     				professores.remove(i);
     				removed = true;
     				break;
@@ -55,13 +56,16 @@ public class GerirProfessor {
     	 
     	case 4:
     		System.out.println("numescolar do professor que pretende atualizar: ");
-    		int numescolar1 = Ler.umInt();
+    		int numescolar2 = Ler.umInt();
     		boolean found = false;
     		for(int i = 0; i < professores.size(); i++) {
-    			if(professores.get(i).getNif() == numescolar1) {
+    			if(professores.get(i).getNif() == numescolar2) {
     				found = true;
     				Professor professor = professores.get(i);
-    			
+    				
+    			System.out.println("Informações atuais do professor:");
+	            System.out.println(professor.toString());
+		
     	        System.out.println("Digite o novo nome do professor: ");
     	        String nome = Ler.umaString();
     	        System.out.println("Digite o novo email do professor: ");
@@ -70,24 +74,31 @@ public class GerirProfessor {
     	        float salario = Ler.umFloat();
     	        System.out.println("Digite o novo número de turmas do professor: ");
     	        int numturmas = Ler.umInt();
-    			
+    	        System.out.println("Digite o novo NIF do professor: ");
+    	        int nif = Ler.umInt();
+    	        
+    	        System.out.println("Atualize as disciplinas que o professor leciona:");
+                List<Disciplina> disciplinasAtualizadas = Disciplina.getDisciplinas();
+                professor.setDisciplina(disciplinasAtualizadas);
+    	        
     	        professor.setNome(nome);
     	        professor.setEmail(email);
     	        professor.setSalario(salario);
     	        professor.setNumturmas(numturmas);
+    	        professor.setNif(nif);
     	        
     			System.out.println("Professor atualizado com sucesso!");
-    			break;
     			
     			}
     		}
     	   
     	     if(!found) {
     			System.out.println("Professor não encontrado.");
-    		}break;
     		}
-    	
+    		} break;
+    		FuncProfessor.saveTofile(professores); //está a dar erro
     	}while (op != 7);
-    
+   
    	}
  } 
+
