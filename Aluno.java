@@ -1,3 +1,6 @@
+package Aluno;
+import Pessoa.Pessoa;
+
 import java.util.ArrayList;
 import myinputs.Ler;
 import java.io.Serializable;
@@ -10,15 +13,17 @@ public class Aluno extends Pessoa {
         private int nif;
         private String email;
         private int anoescolar;
+        private float media;
         
-        public Aluno(Pessoa p, int nif, String email, int anoescolar) {
+        public Aluno(Pessoa p, int nif, String email, int anoescolar, float media) {
         	super(p.getNome(), p.getApelido(), p.getNumescolar(), p.getNascimento(), p.getCargo());
         	this.id = ultimoId + 1;
 			ultimoId++;
             //curso
 			this.nif = nif;
 			this.email = email;
-            this.anoescolar= anoescolar;      
+            this.anoescolar= anoescolar; 
+            this.media = media;
     }
 	    
         
@@ -41,7 +46,13 @@ public class Aluno extends Pessoa {
 				this.anoescolar=anoescolar;
 			}
 				
+		public float getMedia() {
+			return media;
+		}
 			
+		public void setMedia(float media) {
+			this.media = media;
+		}
 						
 	
 	public static Aluno novoAluno() {
@@ -53,12 +64,14 @@ public class Aluno extends Pessoa {
 		int nif = Ler.umInt();
 		System.out.println("Insira o email do aluno: ");
 		String email = Ler.umaString();
+		System.out.println("Insira a média do aluno: ");
+		float media = Ler.umFloat();
 		
-		return new Aluno(p, anoescolar, email, nif);
+		return new Aluno(p, anoescolar, email, nif, media);
 	}
 	
 		public String tostring(){
-			return super.toString() + String.format("Curso: %s, NIF: %d, Email: %s", nif, email); 
+			return super.toString() + String.format("Curso: %s, NIF: %d, Email: %s, Média: %f", nif, email, media); 
 			
 		}
 	} 
