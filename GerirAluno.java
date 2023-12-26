@@ -1,5 +1,7 @@
-mport myinputs.Ler;
+package Aluno;
+
 import java.util.ArrayList;
+import myinputs.Ler;
 
 public class GerirAluno {
 	
@@ -71,19 +73,22 @@ public class GerirAluno {
     	        int nif = Ler.umInt();
     	        System.out.println("Digite o novo ano escolar:");
     	        int anoescolar =Ler.umInt();
+    	        System.out.println("Digite a nova media do aluno: ");
+    	        float media = Ler.umFloat();
     			
     	        aluno.setNome(nome);
     	        aluno.setEmail(email);
     	        //curso
     	        aluno.setNif(nif);
     	        aluno.setAnoescolar(anoescolar);
+    	        aluno.setMedia(media);
     	        
     	        System.out.println("Aluno atualizado com sucesso!");
     	        
-    	}
-    }
-    		if(!found){
-    		System.out.println("Aluno não encontrado.");
+    		}
+    		}
+    			if(!found){
+    			System.out.println("Aluno não encontrado.");
     		}break;
     	
     	}
@@ -91,4 +96,6 @@ public class GerirAluno {
     }while (op != 7);
     }
 }
+
+
 
