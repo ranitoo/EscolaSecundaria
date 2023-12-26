@@ -95,8 +95,9 @@ public class GerirProfessor {
     	     if(!found) {
     			System.out.println("Professor não encontrado.");
     		}
-    		} break;
-    		FuncProfessor.saveTofile(professores); //está a dar erro
+    		} 
+    		FuncProfessor.saveTofile(professores); 
+	    break;
     	}while (op != 7);
    
    	}
