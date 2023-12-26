@@ -1,4 +1,4 @@
-import myinputs.Ler;
+mport myinputs.Ler;
 import java.util.ArrayList;
 
 public class GerirAluno {
@@ -59,12 +59,9 @@ public class GerirAluno {
     		for(int i = 0; i < alunos.size(); i++) {
     			if(alunos.get(i).getNumescolar() == numescolar) {
     				found = true;
-    				break;
-    			}
-    		}
-    		
-    		if(found) {
-    			Aluno aluno = alunos.get(i);
+    				Aluno aluno = alunos.get(i);
+    	
+    			
     	        System.out.println("Digite o novo nome do aluno: ");
     	        String nome = Ler.umaString();
     	        System.out.println("Digite o novo email do aluno: ");
@@ -82,8 +79,11 @@ public class GerirAluno {
     	        aluno.setAnoescolar(anoescolar);
     	        
     	        System.out.println("Aluno atualizado com sucesso!");
-    		}else {
-    			System.out.println("Aluno não encontrado.");
+    	        
+    	}
+    }
+    		if(!found){
+    		System.out.println("Aluno não encontrado.");
     		}break;
     	
     	}
