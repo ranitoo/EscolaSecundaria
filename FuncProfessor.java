@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 public class FuncProfessor {
 
-    public static ArrayList<Professor> getProfessores() {
-        ArrayList<Professor> professores = new ArrayList<>();
+    
+	public static ArrayList<Professor> getProfessores() {
+        ArrayList<Professor> professores = new ArrayList<Professor>();
 
         try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream("./src/MemoryFile/professor.dat"));
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("C:\\Users\\Carolina\\OneDrive\\Ambiente de Trabalho\\POO-prática\\professor.dat"));
             Professor.setUltimo(is.readInt());
             professores = (ArrayList<Professor>) is.readObject();
             is.close();
@@ -35,9 +36,9 @@ public class FuncProfessor {
         return null;
     }
 
-    public static void saveToFile(ArrayList<Professor> professores) {
+    public static void saveTofile(ArrayList<Professor> professores) {
         try {
-            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./src/MemoryFile/professor.dat"));
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Carolina\\OneDrive\\Ambiente de Trabalho\\POO-prática\\professor.dat"));
             os.writeInt(Professor.getUltimo());
             os.writeObject(professores);
             os.flush();
