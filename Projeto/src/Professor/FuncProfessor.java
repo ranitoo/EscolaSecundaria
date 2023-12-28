@@ -20,22 +20,7 @@ public class FuncProfessor {
 
         return professores;
     }
-
-    public static Professor searchProfessor(ArrayList<Professor> professores) {
-        System.out.print("Encontrar Professor por Nome ou Apelido: ");
-        String text = Ler.umaString();
-
-        for (Professor professor : professores) {
-            if (professor.getNome().contains(text) || professor.getApelido().contains(text)) {
-                System.out.print("Encontramos este professor: ");
-                System.out.println(professor);
-                return professor;
-            }
-        }
-
-        System.out.println("Não foram encontrados resultados!");
-        return null;
-    }
+	
 
     public static void saveTofile(ArrayList<Professor> professores) {
         try {
