@@ -1,5 +1,8 @@
 package Curso;
 import Aluno.Aluno;
+import Horarios.GerirHorario;
+import Horarios.FuncHorario;
+import Horarios.Horarios;
 import Professor.Professor;
 import Disciplina.Disciplina;
 import myinputs.Ler;
@@ -27,6 +30,7 @@ public class GerirCurso {
     public static void gerirCurso() {
         int op;
         ArrayList<Curso> cursos = FuncCurso.getCursos();
+        ArrayList<Horarios> horarios = FuncHorario.gethorarios();
 
         do {
             op = menu();
@@ -47,7 +51,8 @@ public class GerirCurso {
                     break;
 
                 case 4:
-                     //chamar função da classe gerirhorarios 
+                    GerirHorario.gerirHorario(); 
+                    FuncHorario.saveTofile(horarios);
                 	break;
                 
             }
@@ -97,10 +102,16 @@ public class GerirCurso {
 
     
     private static void atribuirProfessor(List<Curso> cursos) {
+    	System.out.println("Cursos disponíveis: ");
+    	for(Curso curso : cursos) {
+    		System.out.println(curso.getNome());
+    	}
+
         System.out.println("Digite o nome do curso: ");
         String nomeCurso = Ler.umaString();
         Curso curso = FuncCurso.getCursoPorNome(cursos, nomeCurso);
 
+        if(curso != null) {
             Professor professor = Professor.novoProfessor();
             System.out.println("Digite o nome da disciplina: ");
             String nomeDisciplina = Ler.umaString();
@@ -108,7 +119,12 @@ public class GerirCurso {
             Disciplina disciplina = getDisciplinaPorNome(nomeDisciplina);
 
                 curso.atribuirProfessor(professor, disciplina);
-                System.out.println("Professor atribuído com sucesso à disciplina " + nomeDisciplina + " no curso " + nomeCurso);   
+                System.out.println("Professor atribuído com sucesso à disciplina " + nomeDisciplina + " no curso " + nomeCurso); 
+                
+        }else {
+        	System.out.println("Curso não encontrado.");
+        }
+        FuncCurso.saveTofile(cursos);
         }
     
     
@@ -129,17 +145,16 @@ private static ArrayList<Disciplina> atribuirDisciplinasAoCurso() {
     do {
         System.out.println("Escolha uma disciplina para adicionar ao curso:");
         List<Disciplina> disciplinaList = Disciplina.getDisciplinas();
-        System.out.println("Disciplinas disponíveis:");
         for (int i = 0; i < disciplinaList.size(); i++) {
-            System.out.println((i + 1) + " - " + disciplinaList.get(i));
+            System.out.println((i) + " - " + disciplinaList.get(i));
         }
         System.out.println("0 - Finalizar seleção");
 
         opcao = Ler.umInt();
 
         if (opcao > 0 && opcao <= disciplinaList.size()) {
-            disciplinasSelecionadas.add(disciplinaList.get(opcao - 1));
-            System.out.println("Disciplina adicionada: " + disciplinaList.get(opcao - 1));
+            disciplinasSelecionadas.add(disciplinaList.get(opcao));
+            System.out.println("Disciplina adicionada: " + disciplinaList.get(opcao));
         } else if (opcao != 0) {
             System.out.println("Opção inválida.");
         }
@@ -151,3 +166,5 @@ private static ArrayList<Disciplina> atribuirDisciplinasAoCurso() {
    
 }
 }
+
+
