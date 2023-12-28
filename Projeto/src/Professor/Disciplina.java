@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Disciplina {
-        Português(2000),
         Biologia_e_Geologia(2000),
         Matemática_A(2000),
         Matemática_B(2000),
+        Português(2000),
         Filosofia(2000),
         Economia(2000),
         Geografia(2000),
