@@ -1,5 +1,5 @@
 package Curso;
-
+import java.util.List;
 import myinputs.Ler;
 import java.io.*;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class FuncCurso {
 
     public static ArrayList<Curso> getCursos() {
-        ArrayList<Curso> cursos = new ArrayList<>();
+        ArrayList<Curso> cursos = new ArrayList<Curso>();
 
         try {
             ObjectInputStream is = new ObjectInputStream(new FileInputStream("./src/Curso/curso.dat"));
@@ -20,7 +20,7 @@ public class FuncCurso {
         return cursos;
     }
 
-    public static Curso getCursoPorNome(ArrayList<Curso> cursos, String nomeCurso) {
+    public static Curso getCursoPorNome(List<Curso> cursos, String nomeCurso) {
         for (Curso curso : cursos) {
             if (curso.getNome().equalsIgnoreCase(nomeCurso)) {
                 return curso;
@@ -29,7 +29,7 @@ public class FuncCurso {
         return null;
     }
 
-    public static void saveTofile(ArrayList<Curso> cursos) {
+    public static void saveTofile(List<Curso> cursos) {
         try {
             ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./src/Curso/curso.dat"));
             os.writeObject(cursos);
@@ -40,4 +40,6 @@ public class FuncCurso {
         }
     }
 }
+
+
 
