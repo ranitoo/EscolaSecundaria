@@ -16,7 +16,7 @@ public class GerirEscola {
         System.out.println("|                    Menu Escola                        |");
         System.out.println("|_______________________________________________________|");
         System.out.println("|                    1 - Curso mais frequentado         |");
-        System.out.println("|                    2 - Média de Idade por Curso       |");
+        System.out.println("|                    2 - Média de Idades da Escola      |");
         System.out.println("|                    3 - Calcular Ranking               |");
         System.out.println("|                    4 - Sair                           |");
         System.out.println("#########################################################");
@@ -40,7 +40,7 @@ public class GerirEscola {
                         break;
 
                     case 2:
-                        mediaIdadePorCurso(minhaEscola);
+                        mediaIdadeEscola(minhaEscola);
                         break;
 
                     case 3:
@@ -57,12 +57,8 @@ public class GerirEscola {
         System.out.println("curso com mais alunos: " + cursoMaisFrequentado);
     }
 
- /*   public static void mediaIdadePorCurso(Escola escola) {
-        escola.mediaIdadesPorCurso();
-    }
-    */
-    public static void mediaIdadePorCurso(Escola escola) {
-        double mediaIdade = escola.mediaIdadesPorCurso(); // Chamando a função da classe Escola
+    public static void mediaIdadeEscola(Escola escola) {
+        double mediaIdade = escola.mediaIdadesEscola(); 
         System.out.println("Média de idade dos alunos em todos os cursos: " + mediaIdade);
     }
     
