@@ -1,26 +1,30 @@
 package Aluno;
+import Pessoa.Pessoa;
 import java.util.ArrayList;
+import java.util.List;
+import Curso.Curso;
 import myinputs.Ler;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import Pessoa.Pessoa;
 
-public class Aluno extends Pessoa {
+public class Aluno extends Pessoa implements Serializable {
 		private static int ultimoId = 0;
 		private int id;
-		//adicionar atributo curso
+		private Curso curso;
         private int nif;
         private String email;
         private int anoescolar;
+        private float media;
         
-        public Aluno(Pessoa p, int nif, String email, int anoescolar) {
+        public Aluno(Pessoa p, int nif, String email, Curso curso, int anoescolar, float media) {
         	super(p.getNome(), p.getApelido(), p.getNumescolar(), p.getNascimento());
         	this.id = ultimoId + 1;
 			ultimoId++;
-            //curso
+            this.curso = curso;
 			this.nif = nif;
 			this.email = email;
-            this.anoescolar= anoescolar;      
+            this.anoescolar= anoescolar; 
+            this.media = media;
     }
 	    
         
@@ -43,7 +47,21 @@ public class Aluno extends Pessoa {
 				this.anoescolar=anoescolar;
 			}
 				
+		public float getMedia() {
+			return media;
+		}
 			
+		public void setMedia(float media) {
+			this.media = media;
+		}
+		
+		public Curso getCurso() {
+			return curso;
+		}
+		
+	    public void setCurso(Curso curso) {
+	    	this.curso = curso;
+	    }
 						
 	
 	public static Aluno novoAluno() {
@@ -55,14 +73,21 @@ public class Aluno extends Pessoa {
 		int nif = Ler.umInt();
 		System.out.println("Insira o email do aluno: ");
 		String email = Ler.umaString();
+		System.out.println("Insira o curso do aluno: ");
+		String nomeCurso = Ler.umaString();
+		Curso curso = new Curso(nomeCurso);
+		System.out.println("Insira a média do aluno: ");
+		float media = Ler.umFloat();
+	
 		
-		return new Aluno(p, anoescolar, email, nif);
+	  
+	    return new Aluno(p, anoescolar, email, curso, nif, media);
+		
 	}
 	
-		public String tostring(){
-			return super.toString() + String.format("Curso: %s, NIF: %d, Email: %s", nif, email); 
+		public String toString(){
+			return super.toString() + String.format("Curso: %s, NIF: %d, Email: %s, Média: %f",curso, nif, email, media); 
 			
 		}
 	} 
-	
 		
