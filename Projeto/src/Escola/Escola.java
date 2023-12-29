@@ -52,7 +52,7 @@ public class Escola {
     }
 
     public Curso cursoMaisFrequentado() {
-        List<Curso> cursos = FuncCurso.getCursos(); // Carrega cursos do arquivo
+        List<Curso> cursos = FuncCurso.getCursos(); 
         Curso cursoMaisFrequentado = null;
         int maxAlunos = 0;
 
@@ -62,7 +62,7 @@ public class Escola {
         }
 
         for (Curso curso : cursos) {
-            List<Aluno> alunos = curso.getAlunos(); // Obtém a lista de alunos do curso
+            List<Aluno> alunos = curso.getAlunos(); 
 
             System.out.println("Curso: " + curso.getNome() + ", Alunos: " + alunos.size());
 
@@ -82,8 +82,8 @@ public class Escola {
         return cursoMaisFrequentado;
     }
 
-   public double mediaIdadesPorCurso() {
-        List<Curso> cursos = FuncCurso.getCursos(); // Carrega cursos do arquivo
+   public double mediaIdadesEscola() {
+        List<Curso> cursos = FuncCurso.getCursos();
         double somaIdades = 0;
         int totalAlunos = 0;
 
@@ -93,10 +93,10 @@ public class Escola {
         }
 
         for (Curso curso : cursos) {
-            List<Aluno> alunos = curso.getAlunos(); // Obtém a lista de alunos do curso
+            List<Aluno> alunos = curso.getAlunos(); 
 
             for (Aluno aluno : alunos) {
-                somaIdades += aluno.getIdade(); // Supondo que a classe Aluno tenha um método getIdade()
+                somaIdades += aluno.getIdade();
                 totalAlunos++;
             }
         }
@@ -154,3 +154,4 @@ public class Escola {
     public double getMediaNotas() {
         return calcularMediaNotas();
     }
+}
