@@ -1,12 +1,12 @@
 package Curso;
-
-import Professor.Disciplina;
 import Aluno.Aluno;
 import Professor.Professor;
+import Disciplina.Disciplina;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class Curso {
+public class Curso implements Serializable{
 
 	private String nome;
 	private List<Aluno> alunos;
@@ -65,15 +65,9 @@ public class Curso {
 
     @Override
     public String toString() {
-        String s = "Curso{" + "nome='" + nome + '\'' + ", alunos=" + alunos + ", disciplinas=" + disciplinas + ", professores=" + professores +", horarios=" + horarios +'}';
-
-        for (int i = 0; i < disciplinas.size(); i++) {
-            s += "\nDisciplina: " + disciplinas.get(i).name();
-            s += "\n   Professor: " + professores.get(i).getNome();
-            s += "\n   Horário: " + horarios.get(i);
-        }
-
+        String s = "Curso{" + "nome='" + nome + '}';        		
         return s;
     }
 }
+	
 
