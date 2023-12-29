@@ -1,6 +1,7 @@
 package Aluno;
-import myinputs.Ler;
 import java.util.ArrayList;
+import Curso.Curso;
+import myinputs.Ler;
 
 public class GerirAluno {
 	
@@ -13,7 +14,7 @@ public class GerirAluno {
         System.out.println("|                    2 - Remover Aluno                  |");
         System.out.println("|                    3 - Listar Aluno                   |");
         System.out.println("|                    4 - Atualizar Aluno                |");
-        System.out.println("|                    7 - Sair                           |");
+        System.out.println("|                    5 - Sair                           |");
         System.out.println("#########################################################");
         System.out.println("                    Selecione uma opcao                  ");
         opcao = Ler.umInt();
@@ -30,14 +31,15 @@ public class GerirAluno {
     	switch(op) {
     	case 1:
     		alunos.add(Aluno.novoAluno());
+    		FuncAluno.saveToFile(alunos);
     		break;
     		
     	case 2:
-    		System.out.println("Número escolar do aluno que pretende remover: ");
-    		int numescolar = Ler.umInt();
+    		System.out.println("Numero escolar do aluno que pretende remover: ");
+    		int numescolar1 = Ler.umInt();
     		boolean removed = false;
     		for (int i = 0; i < alunos.size(); i++) {
-    			if(alunos.get(i).getNif() == numescolar) {
+    			if(alunos.get(i).getNumescolar() == numescolar1) {
     				alunos.remove(i);
     				removed = true;
     				break;
@@ -48,6 +50,7 @@ public class GerirAluno {
     		}else {
     			System.out.println("Aluno não encontrado.");
     		}
+    		FuncAluno.saveToFile(alunos);
     		break;
     			
     	case 3:			
@@ -56,6 +59,7 @@ public class GerirAluno {
     	 
     	case 4:
     		System.out.println("Número do aluno que pretende atualizar: ");
+    		int numescolar = Ler.umInt();
     		boolean found = false;
     		for(int i = 0; i < alunos.size(); i++) {
     			if(alunos.get(i).getNumescolar() == numescolar) {
@@ -67,28 +71,33 @@ public class GerirAluno {
     	        String nome = Ler.umaString();
     	        System.out.println("Digite o novo email do aluno: ");
     	        String email = Ler.umaString();
-    	        //curso
+    	        System.out.println("Insira um novo curso para o aluno: ");
+    	        String nomeCurso = Ler.umaString();
+    			Curso curso = new Curso(nomeCurso);
     	        System.out.println("Digite o novo NIF do aluno: ");
     	        int nif = Ler.umInt();
-    	        System.out.println("Digite o novo ano escolar:");
+    	        System.out.println("Digite o novo ano escolar: ");
     	        int anoescolar =Ler.umInt();
+    	        System.out.println("Digite a nova media do aluno: ");
+    	        float media = Ler.umFloat();
     			
     	        aluno.setNome(nome);
     	        aluno.setEmail(email);
-    	        //curso
+    	        aluno.setCurso(curso);
     	        aluno.setNif(nif);
     	        aluno.setAnoescolar(anoescolar);
+    	        aluno.setMedia(media);
     	        
     	        System.out.println("Aluno atualizado com sucesso!");
-    	        
-    	}
-    }
-    		if(!found){
-    		System.out.println("Aluno não encontrado.");
+    	        break;
+    		}
+    		}
+    			if(!found){
+    			System.out.println("Aluno não encontrado.");
+    			FuncAluno.saveToFile(alunos);
     		}break;
     	
     	}
     
-    }while (op != 7);
-    }
-}
+    }while (op != 5);
+    }}   
