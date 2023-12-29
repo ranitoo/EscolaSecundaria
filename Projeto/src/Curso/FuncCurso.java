@@ -1,5 +1,7 @@
 package Curso;
 import java.util.List;
+
+import Horarios.Horarios;
 import myinputs.Ler;
 import java.io.*;
 import java.util.ArrayList;
@@ -40,6 +42,5 @@ public class FuncCurso {
         }
     }
 }
-
 
 
