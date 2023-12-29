@@ -1,18 +1,20 @@
 package Professor;
 import Pessoa.Pessoa;
+
+
 import java.util.List;
 import java.util.ArrayList;
 import java.io.Serializable;
 import myinputs.Ler;
 
-public class Professor extends Pessoa implements Serializable{
-	private static int ultimoId = 0;
-	private int id;
-	private List<Disciplina> disciplinas; 
-	private float salario; 
-	private int numturmas;
-	private int nif;
-	private String email;
+	public class Professor extends Pessoa implements Serializable{
+		private static int ultimoId = 0;
+		private int id;
+		private List<Disciplina> disciplinas; 
+		private float salario; 
+		private int numturmas;
+		private int nif;
+		private String email;
 		
 		
 		public Professor(Pessoa p, List<Disciplina> disciplinas, float salario, int numturmas, int nif, String email) {
@@ -36,6 +38,10 @@ public class Professor extends Pessoa implements Serializable{
 		
 	    public int getId() {
 	        return id;
+	    }
+	    
+	    public void setId(int id) {
+	    	this.id = id;
 	    }
 	    
 		public List<Disciplina> getDisciplinas() {
@@ -93,17 +99,11 @@ public class Professor extends Pessoa implements Serializable{
 			        opcao = Ler.umInt();
 			        
 			        if (opcao > 0 && opcao <= disciplinaList.size()) {
-			            disciplinas.add(disciplinaList.get(opcao - 1));
-			            System.out.println("Disciplina adicionada: " + disciplinaList.get(opcao - 1));
-			            
-			            System.out.println("Deseja adicionar mais uma disciplina? (1 - Sim / 2 - Não)");
-				        opcao = Ler.umInt();
-				        
-			        } else {
-			            System.out.println("Opção inválida.");
-			        }
-
-			    } while (opcao == 1);
+			            disciplinas.add(disciplinaList.get(opcao));
+			            System.out.println("Disciplina adicionada: " + disciplinaList.get(opcao));
+					}break;
+							
+			    } while (opcao != 0);
 			
 			System.out.println("Insira o salário do professor: ");
 			float salario = Ler.umFloat();
@@ -117,8 +117,10 @@ public class Professor extends Pessoa implements Serializable{
 			return new Professor(p, disciplinas, salario, numturmas, nif, email);
 		}
 		
-		public String toString() {
-		    return String.format("Nome: %s %s, Salário: %.2f, NumTurmas: %d, NIF: %d, Email: %s, Disciplinas: %s",
-		            getNome(), getApelido(), salario, numturmas, nif, email, disciplinas);
+		@Override
+		public String toString(){
+			return  super.toString() + String.format("Disciplinas que leciona: [%s], salario: %f, numturmas: %d, NIF: %d, Email: %s ", disciplinas, salario, numturmas, nif, email);
+					
+			
 		}
 	}
