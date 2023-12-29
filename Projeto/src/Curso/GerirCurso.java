@@ -52,7 +52,7 @@ public class GerirCurso {
 
                 case 4:
                     GerirHorario.gerirHorario(); 
-                    FuncHorario.saveTofile(horarios);
+                    FuncHorario.Guardar(horarios);
                 	break;
                 
             }
@@ -166,5 +166,4 @@ private static ArrayList<Disciplina> atribuirDisciplinasAoCurso() {
    
 }
 }
-
 
