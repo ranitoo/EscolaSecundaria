@@ -1,9 +1,11 @@
 package Professor;
+
 import myinputs.Ler;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public enum Disciplina {
+public enum Disciplina implements Serializable {
         Biologia_e_Geologia(2000),
         Matemática_A(2000),
         Matemática_B(2000),
@@ -20,7 +22,7 @@ public enum Disciplina {
         TIC(2000),
         Fisica_e_Quimica(2000);
 
-    private int salario;
+	private int salario;
     
     Disciplina(int salario) {
         this.salario = salario;
@@ -60,5 +62,4 @@ public enum Disciplina {
     	}while (opcao != 0);
         
     	return disciplinasSelecionadas;
-    }
-   }
+    }}
