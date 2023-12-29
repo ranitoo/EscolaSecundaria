@@ -1,4 +1,5 @@
 package Professor;
+
 import myinputs.Ler;
 import java.util.List;
 import java.util.ArrayList;
@@ -95,9 +96,10 @@ public class GerirProfessor {
     	   
     	     if(!found) {
     			System.out.println("Professor não encontrado.");
-    	     }
     		}
-    		FuncProfessor.saveTofile(professores); 
+    		}
+    		FuncProfessor.saveTofile(professores);
+    		break;
     	}while (op != 7);
    
    	}
