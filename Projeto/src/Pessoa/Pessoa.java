@@ -1,4 +1,5 @@
 package Pessoa;
+
 import myinputs.Ler;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -10,8 +11,7 @@ import java.io.Serializable;
 	   String nome;
 	   String apelido;
 	   int numescolar;
-	   LocalDateTime nascimento;
-	   String cargo;	
+	   LocalDateTime nascimento;	
 
 	
 	public Pessoa(String nome, String apelido, int numescolar,LocalDateTime nascimento) {
@@ -90,8 +90,9 @@ import java.io.Serializable;
 	    this.nascimento = nascimento;
 	}
 	
-	public String tostring() {
-		String s = String.format("Nome: %s, Apelido: %s, Numeroescolar: %d, Idade: %d, Cargo: %d", nome, apelido, numescolar, getIdade());
-		return s;
+	
+	public String toString() {
+	String s = String.format("Nome: %s, Apelido: %s, Numeroescolar: %d, Idade: %d", nome, apelido, numescolar, getIdade());
+	return s;
 	}
 }
