@@ -1,6 +1,5 @@
 package Escola;
 
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -33,4 +32,3 @@ public class FuncEscola {
         }
     }
 }
-
